@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- MAIN FORM -->
+
+
+
+<div class="wrapper">
+    <h1 class = "calcHeading">Welcome to the Grade Calculator!</h1>
+
+    <form class = "assignmentForm" method="post">
+        <div class="calcText" id="iWant">
+            <a class="calcText">I want my overall grade to be </a>
+            <input class="calcText" type="text" id="desiredGrade" style="margin-left:3px;width:40px;">
+        </div>
+
+        <div>
+            <!-- COURTESY OF RAHUL RANI; DRAG AND DROP GRADE STATS FILE -->
+            <input id="fileDrop" class="calcText" type="file" accept=".htm, .html">
+        </div>
+
+        <div>
+            <!-- add/remove assignment buttons -->
+            <button type="button" class="addButton button1 calcText" >Add an assignment</button>
+
+            <div id="inputs">
+
+            </div>
+
+            <!-- button to submit inputted assignments -->
+            <div>
+                <button type="button" class="submitAssignments button1 calcText">Submit the Assignments</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+
+<!-- START OF SECOND SCRIPT -->
+<script>
+
+function checkAddButton(form) {
+
+    // Check if add assignment button is pressed
+    document.querySelector(".addButton").addEventListener("click", function() {
+
+        // create div element (for staggering assignments)
+        let assignmentDiv = document.createElement("div")
+
+        // create input element for assignment name
+        let nameInput = document.createElement("input")
+        nameInput.className = "calcText";
+        nameInput.type = "text";
+        nameInput.placeholder = "Assignment Name";
+
+        // create input element for assignment points
+        let pointInput = document.createElement("input")
+        pointInput.type = "text";
+        pointInput.placeholder = "Assignment Points";
+        pointInput.className = "inputtedPoints calcText";
+
+        // append input elements to div
+        assignmentDiv.appendChild(nameInput)
+        assignmentDiv.appendChild(pointInput)
+
+        // append div element to form
+        document.getElementById("inputs").appendChild(assignmentDiv)
+
+
+    })
+
+}
+
+function getPointsFromForm(form) {
+
+    // check if submit assignments button is pressed
+    document.getElementsByClassName("submitAssignments")[0].addEventListener("click", function() {
+
+    // create list to store all inputted points
+        let pointsList = document.getElementsByClassName("inputtedPoints");
+
+        // create count variable for total number of points left for student to earn
+        var totalPointsLeft = 0
+
+        // for loop to iterate through list of inputted points and add values to total points
+        for (let i = 0; i < pointsList.length; i++) {
+            totalPointsLeft += Number(pointsList[i].value);
+        }
+
+        // create output div for total points (after sending variable to python using AJAX)
+        let pointsDiv = document.createElement("div");
+        pointsDiv.className = "pointy";
+
+        // append the new output div to the form
+        form.appendChild(pointsDiv);
+
+        // store file in a variable (for ease of sending over)
+
+        //store file in file variable
+        var fileVariable = document.getElementById('fileDrop');
+
+        // READ THE FILE
+        function readFile(file) {
+            return new Promise((resolve, reject) => {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    resolve(e.target.result);
+                };
+
+                reader.onerror = function(e) {
+                    reject(e);
+                };
+
+                reader.readAsText(file);
+            });
+        }
+
+        // optimize variable for code
+        var file = fileVariable.files[0]
+        let fileContent;
+        readFile(file).then(function(result) {
+            fileContent = result;
+
+            // get desired grade from form
+            let wantedGrade = document.getElementById('desiredGrade');
+
+            // GEEKS AJAX REQUEST CODE (TO SEND VARIABLE FROM JS TO PYTHON THROUGH FLASK)
+            // https://www.geeksforgeeks.org/pass-javascript-variables-to-python-in-flask/
+
+            $.ajax({
+                    // sends POST request to url '/process/' with data
+                    url: '/process',
+                    type: 'POST',
+
+                    // data includes three things: total points left, and the grade stats file and the desired grade of the user
+                    data: { 'totalPoints': totalPointsLeft,
+                            'file': fileContent,
+                            'wantedGrade': wantedGrade.value
+                    },
+
+                    // THIS IS THE PART THAT ACTUALLY DISPLAYS THE VARIABLE ON THE SCREEN (IN A DIV)
+                    success: function(response) {
+                        console.log(response)
+                        thingy = document.getElementsByClassName('pointy')[0];
+                        thingy.innerHTML = response;
+                        thingy.className = "calcText"
+                    },
+
+                    // if error with AJAX request, error will be logged into console
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+
+        })
+
+    })
+}
+
+
+// store form element as variable
+let form = document.getElementsByClassName("assignmentForm")[0]
+
+// call check add
+checkAddButton(form);
+
+// call get points from form
+getPointsFromForm(form);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+        <title>LS Academia</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- font awesome (gives u a ton of nice icons) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+            integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    <body>
+
+        <!-- navbar from scratch!!!! -->
+        <div class="navbar">
+            <li class="nav-item nav-title">
+                <h2 id="websiteTitle">LS&nbsp;Academia</h2>
+            </li>
+
+            <li class="nav-item home-nav">
+                <p class="icon"><i class="nav-icon fa-solid fa-house"></i></p>
+                <p class="nav-item-text"><a href="{{ url_for('home') }}" class="nav-item-text">Home</a></p>
+            </li>
+
+            <li class="nav-item ninth">
+                <p class="icon"><i class="nav-icon fa-solid fa-9 adjusted-icon-one"></i></p>
+                <p><a href="{{ url_for('ninthgrade') }}" class="nav-item-text">9th Grade</a></p>
+
+            </li>
+
+            <li class="nav-item tenth">
+                <p class="icon"><i class="nav-icon fa-solid fa-book"></i></p>
+                <p><a href="{{ url_for('tenthgrade') }}" class="nav-item-text">10th Grade</a></p>
+            </li>
+
+            <li class="nav-item eleventh">
+                <p class="icon"><i class="nav-icon fa-solid fa-lightbulb adjusted-icon-two"></i></p>
+                <p><a href="{{ url_for('eleventhgrade') }}" class="nav-item-text">11th Grade</a></p>
+            </li>
+
+            <li class="nav-item twelfth">
+                <p class="icon"><i class="nav-icon fa-solid fa-graduation-cap adjusted-icon-three"></i></p>
+                <p><a href="{{ url_for('twelfthgrade') }}" class="nav-item-text">12th Grade</a></p>
+            </li>
+
+            <li class="nav-item calculator">
+                <p class="icon"><i class="nav-icon fa-solid fa-calculator adjusted-icon-four"></i></p>
+                <p><a href="{{ url_for('index') }}" class="nav-item-text">Calculator</a></p>
+            </li>
+
+
+        </div>
+
+
+
+
+
+        <div class="main">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

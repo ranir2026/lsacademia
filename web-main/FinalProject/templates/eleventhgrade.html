@@ -1,0 +1,451 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<button class="button1" id="eleventhsetup">Set up 11th Grade Classes</button>
+
+<h3 id="textUnderSetup" class="level-select-visible">You have not chosen any classes yet.</h3>
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    let sideBar = document.getElementById("11thsetupformcontainer")
+
+    sideBar.classList.remove("level-select-visible")
+    sideBar.classList.add("level-select-hidden")
+
+    // make all modal slides hidden when page is loaded
+    let modalSlides = document.getElementsByClassName("modalSlide")
+
+    for (i=0;i<modalSlides.length;i++) {
+        modalSlides[i].classList.remove("level-select-visible")
+        modalSlides[i].classList.add("level-select-hidden")
+
+    }
+
+    let setupButton = document.getElementById("eleventhsetup");
+
+    setupButton.addEventListener("mouseup", function () {
+
+        // make side bar visible
+        sideBar.classList.remove("level-select-hidden")
+        sideBar.classList.add("level-select-visible")
+
+        // make all modal slides visible
+        for (i=0;i<modalSlides.length;i++) {
+
+        modalSlides[i].classList.remove("level-select-hidden")
+        modalSlides[i].classList.add("level-select-visible")
+
+        }
+
+        // remove text under classes
+        let text = document.getElementById("textUnderSetup")
+        text.classList.add('level-select-hidden')
+        text.classList.remove('level-select-visible')
+
+    })
+
+})
+
+
+
+
+
+
+
+</script>
+
+
+
+<div id="mainClassesDisplayContainer">
+
+</div>
+
+
+<div id="11thsetupformcontainer" class="level-select-visible">
+
+    <form id="11thsetupform" class="eleventhsetupform">
+        <div id="classesLog11">
+            <h2>Your classes (11)</h2>
+            <div id="math11">
+                <!-- <h3>Math: </h3> -->
+                <h5 class='selected11thClass' id="grade11Math">Not Selected Yet</h5>
+
+            </div>
+
+            <div id="sci11">
+                <!-- <h3>Science: </h3> -->
+                <h5 class = 'selected11thClass' id="grade11sci">Not Selected Yet</h5>
+            </div>
+
+            <div id="history11">
+                <!-- dynamically done in JS -->
+            </div>
+
+            <div id="eng11">
+                <!-- dynamically done in JS to accomodate for 2 semesters or 1 full -->
+
+            </div>
+
+            <div id="lang11">
+                <!-- <h3>Language: </h3> -->
+                <h5 class = 'selected11thClass'id="grade11lang">Not Selected Yet</h5>
+            </div>
+
+            <div id="wellness11">
+                <!-- <h3>Wellness: </h3> -->
+                <h5 class = 'selected11thClass'>CARDIOVASCULAR HEALTH</h5>
+                <h5 class = 'selected11thClass'>HEALTH ISSUES</h5>
+                <h5 class = 'selected11thClass' id="wellness1">Not Selected Yet</h5>
+                <h5 class = 'selected11thClass' id="wellness2">Not Selected Yet</h5>
+            </div>
+
+            <div id="elective11">
+                <!-- <h3>Elective: </h3> -->
+                <div id="electivesDisplay">
+
+                </div>
+            </div>
+
+            <button type="button" id="confirm11thclasses" class="button1">Confirm</button>
+        </div>
+
+
+        <!-- MATH -->
+        <div class="modalSlide" id="modalSlide1">
+            <h2>Let's start with Math</h2>
+            <div id="mathLevelSelect">
+                <div class="alg-or-geo-select-wrapper">
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="algorgeo" id="algebraII" value="Algebra II Standard">
+                        <label for="algebraII">Algebra II</label>
+                    </div><br>
+
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="algorgeo" id="tpc" value="Trigonometry/Precalculus">
+                        <label for="tpc">TPC</label>
+                    </div><br>
+
+                </div>
+
+                <div id="algIILevelSelect" class="level-select-visible">
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="algIILevelSelect" id="algIIstandard" value="Standard">
+                        <label for="algIIstandard">Standard</label>
+                    </div><br>
+
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="algIILevelSelect" id="algIIadvanced" value="Advanced">
+                        <label for="algIIadvanced">Advanced</label>
+                    </div><br>
+
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="algIILevelSelect" id="algIIaccel" value="Accelerated Advanced">
+                        <label for="algIIaccel">Accelerated Advanced</label><br>
+                    </div><br>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SCIENCE -->
+        <div class="modalSlide" id="modalSlide2">
+            <h2>Let's go to Science</h2>
+            <div id="scienceLevelSelect">
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" checked="checked" id="mandatoryChem" value="Chemistry">
+                    <label for="mandatoryChem">Chemistry</label>
+                </div><br>
+
+                <p>What Chemistry class are you taking?</p>
+
+                <!-- accelerated -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="accelerated" name="chemLevel" value="Accelerated">
+                    <label for="accelerated">Accelerated</label>
+                </div><br>
+
+                <!-- bio 1 -->
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" id="chem1" name="chemLevel" value="1">
+                    <label for="chem1">1</label>
+                </div><br>
+
+                <!-- bio 2 -->
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" id="chem2" name="chemLevel" value="2">
+                    <label for="chem2">2</label>
+                </div><br>
+
+                <!-- applied -->
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" id="chemPractical" name="chemLevel" value="Practical">
+                    <label for="chemPractical">Practical</label>
+                </div><br>
+
+            </div>
+        </div>
+
+        <!-- HISTORY -->
+        <div class="modalSlide" id="modalSlide3">
+            <h2>Let's go to History</h2>
+            <div id="historyLevelSelect">
+                <p>Choose a history course! All are year-long courses.</p>
+            </div>
+
+            <div id="history-select-wrapper">
+
+            </div>
+        </div>
+
+        <!-- English -->
+        <div class="modalSlide" id="modalSlide4">
+            <h2>Let's go to English</h2>
+            <div id="englishSelect">
+
+                <p>Would you like to take 2 semester-long courses or 1 year-long course for your English block?</p>
+
+                <div class="sem-or-yr-select-wrapper">
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="semoryrEnglish" id="semesterEnglish" value="semester">
+                        <label for="semesterEnglish">2 semester-long courses</label>
+                    </div><br>
+
+                    <div class="radio-wrapper">
+
+                        <input type="radio" class="multichoice1" name="semoryrEnglish" id="yearEnglish" value="year">
+                        <label for="yearEnglish">1 year-long course</label>
+                    </div><br>
+
+                </div>
+
+                <p>Choose an English class! Keep in mind that this is for one, year long block. You can choose to either select 2 semester-long classes, or 1 year-long class. </p>
+
+                <div id="semesterEnglish11container" class="elective-select-visible">
+                    <p>These are the semester-long English classes available to you. (Choose 2)</p>
+                    <div id="semesterEnglish11">
+
+                    </div>
+                </div>
+
+                <div id="yearEnglish11container" class="elective-select-visible">
+                    <p>These are the year-long English classes available to you. (Choose 1)</p>
+                    <div id="yearEnglish11"></div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- WORLD LANGUAGE -->
+        <div class="modalSlide" id="modalSlide5">
+            <h2>Let's go to World Language</h2>
+            <div id="languageSelect">
+                <p>What world language are you taking? </p>
+
+                <!-- spanish -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="spanish" name="language11" value="Spanish">
+                    <label for="spanish">Spanish</label>
+                </div><br>
+
+                <!-- french -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="french" name="language11" value="French">
+                    <label for="french">French</label>
+                </div><br>
+
+                <!-- german  -->
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" id="german" name="language11" value="German 3">
+                    <label for="german">German 3</label>
+                </div><br>
+
+                <!-- latin -->
+                <div class="radio-wrapper">
+                    <input type="radio" class="multichoice1" id="latin" name="language11" value="Latin 3">
+                    <label for="latin">Latin 3</label>
+                </div><br>
+
+                <!-- mandarin -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="mandarin" name="language11" value="Mandarin 3">
+                    <label for="mandarin">Mandarin 3</label>
+                </div><br>
+            </div>
+
+            <div id="regularLangLevelSelect"  class="level-select-hidden">
+                <p>What level are you taking?</p>
+
+                <!-- 3 (1) -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="3 (1)" name="langLevel" value="3 (1)">
+                    <label for="3 (1)">3 (1)</label>
+                </div><br>
+
+                <!-- 3 (2) -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="3 (2)" name="langLevel" value="3 (2)">
+                    <label for="3 (2)">3 (2)</label>
+                </div><br>
+
+                <!-- 4 (1) -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="4 (1)" name="langLevel" value="4 (1)">
+                    <label for="4 (1)">4 (1)</label>
+                </div><br>
+
+                <!-- 4 (2) -->
+                <div class="radio-wrapper">
+                    <input type="radio"  class="multichoice1" id="4 (2)" name="langLevel" value="4 (2)">
+                    <label for="4 (2)">4 (2)</label>
+                </div><br>
+
+
+            </div>
+
+        </div>
+
+        <!-- Wellness -->
+        <div class="modalSlide" id="modalSlide6">
+            <h2>Let's go to Wellness</h2>
+            <p>Mandatory Classes</p>
+            <div class="radio-wrapper">
+                <input type="radio" class="multichoice1" checked="checked" id="CPR" value="HEALTH ISSUES">
+                <label for="HEALTH ISSUES">Health Issues</label>
+            </div><br>
+
+            <div class="radio-wrapper">
+                <input type="radio" class="multichoice1" checked="checked" id="CARDIOVASCULAR HEALTH" value="CARDIOVASCULAR HEALTH">
+                <label for="outdoorPursuits">Cardiovascular Health</label>
+            </div><br>
+
+
+            <p>Choose 2 wellness electives!</p>
+            <div id="wellnessElectiveSelect11">
+                <!-- GOING TO USE JS TO ITERATE THROUGH POS DICT AND CREATE RADIO  -->
+            </div>
+        </div>
+
+        <!-- regular elective -->
+        <div class="modalSlide" id="modalSlide7">
+            <h2>Let's go to your Elective</h2>
+            <div id="regElectiveDiv11">
+
+                <p>Would you like to take 2 semester-long courses or 1 year-long course for your elective block?</p>
+
+                <div class="sem-or-yr-select-wrapper">
+                    <div class="radio-wrapper">
+                        <input type="radio" class="multichoice1" name="semoryr" id="semester" value="semester">
+                        <label for="semester">2 semester-long courses</label>
+                    </div><br>
+
+                    <div class="radio-wrapper">
+
+                        <input type="radio" class="multichoice1" name="semoryr" id="year" value="year">
+                        <label for="year">1 year-long course</label>
+                    </div><br>
+
+                </div>
+
+                <p>Choose an elective! Keep in mind that this is for one, year long elective block. You can choose to either select 2 semester-long electives, or 1 year-long elective. </p>
+
+                <div id="semesterElective11container" class="elective-select-visible">
+                    <p>These are the semester-long electives available to you. (Choose 2)</p>
+                    <div id="semesterElective11">
+
+                    </div>
+                </div>
+
+                <div id="yearElective11container" class="elective-select-visible">
+                    <p>These are the year-long electives available to you. (Choose 1)</p>
+                    <div id="yearElective11">
+
+                        <!-- language double enrollment option button (SHOULD STAY VISIBLE)-->
+
+                        <div class="radio-wrapper">
+                            <input type="radio" name="yearElectiveSelect" id="langDblEnroll" value="Language Double Enrollment">
+                            <label for="langDblEnroll">Language Double Enrollment</label>
+                        </div>
+                    </div>
+
+                    <!-- language double enroll options (SHOULD STAY HIDDEN UNTIL USER CHOOSES DOUBLE ENROLL BUTTON) -->
+                    <div name = "langDblEnrollOptions" id="langDblEnrollOptions" class="elective-select-hidden">
+
+                        <p>What world language would you like to double enroll in? </p>
+
+                        <!-- spanish dbl enroll -->
+                        <div class="radio-wrapper">
+                            <input type="radio"  class="langDblEnrollOption" id="spanishDblEnroll" name="language11DblEnroll" value="Spanish Double Enroll">
+                            <label for="spanishDblEnroll">Spanish Double Enroll</label>
+                        </div><br>
+
+                        <!-- french dbl enroll -->
+                        <div class="radio-wrapper">
+                            <input type="radio"  class="langDblEnrollOption" id="frenchDblEnroll" name="language11DblEnroll" value="French Double Enroll">
+                            <label for="frenchDblEnroll">French Double Enroll</label>
+                        </div><br>
+
+                        <!-- german dbl enroll -->
+                        <div class="radio-wrapper">
+                            <input type="radio" class="langDblEnrollOption" id="germanDblEnroll" name="language11DblEnroll" value="German Double Enroll">
+                            <label for="germanDblEnroll">German Double Enroll</label>
+                        </div><br>
+
+                        <!-- latin dbl enroll -->
+                        <div class="radio-wrapper">
+                            <input type="radio" class="langDblEnrollOption" id="latinDblEnroll" name="language11DblEnroll" value="Latin Double Enroll">
+                            <label for="latinDblEnroll">Latin Double Enroll</label>
+                        </div><br>
+
+                        <!-- mandarin dbl enroll -->
+                        <div class="radio-wrapper">
+                            <input type="radio"  class="langDblEnrollOption" id="mandarinDblEnroll" name="language11DblEnroll" value="Mandarin Double Enroll">
+                            <label for="mandarinDblEnroll">Mandarin Double Enroll</label>
+                        </div><br>
+
+
+
+                    </div>
+
+                </div>
+
+                <!-- GOING TO USE JS TO ITERATE THROUGH POS DICT AND CREATE RADIO  -->
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- LANGUAGE AND WELLNESS -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhelectiveandwellness.js')  }}"></script>
+
+<!-- LANGUAGE -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhlangy.js')   }}"></script>
+
+<!-- MATH -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhmath.js')  }}"></script>
+
+<!-- CONFIRM BUTTON -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhConfirmButton.js')  }}"></script>
+
+<!-- ENGLISH -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhEnglish.js')  }}"></script>
+
+<!-- HISTORY -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhHistory.js')  }}"></script>
+
+<!-- CAROUSEL FOR MODAL SLIDES -->
+<script src="{{ url_for('static', filename='eleventhJS/eleventhcarousel.js')  }}"></script>
+
+<!-- SCRIPT TO INPUT ALL CHOSEN CLASSES INTO LIST -->
+<script src="{{  url_for('static', filename='eleventhJS/eleventhconsolidate.js')  }}"></script>
+
+
+
+{% endblock %}

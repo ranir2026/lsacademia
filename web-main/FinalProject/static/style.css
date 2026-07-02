@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* font usages
+font-family: "Roboto", sans-serif; --> body
+font-family: "Archivo", sans-serif; --> heading
+
+*/
+
+.calcHeading {
+
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0px;
+
+}
+
+.calcText {
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 100%
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+@keyframes fadeInOnPageLoad {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+body {
+    background-color: #ededed;
+    animation: fadeInOnPageLoad ease 0.8s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Archivo", sans-serif;
+}
+
+p, label {
+    font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 18px 3px rgba(173,173,173,0.75);
+    width:50%;
+    height: 75%;
+    overflow: scroll;
+}
+
+.addButton, .submitAssignments {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#inputs > div {
+    margin-bottom: 5px;
+}
+
+#inputs > div > input, input[type="text"] {
+    border: 2px solid rgb(173, 173, 173);
+    padding: 2px;
+    padding-left: 3px;
+    border-radius: 12px;
+    margin-right: 5px;
+}
+
+input[type=file]::file-selector-button, .button1 {
+    margin-right: 2.5px;
+    font-family: "Roboto", sans-serif;
+    background-color: #fff;
+    border: 1.5px solid #405cf5;
+    border-radius: 12px;
+    color: #405cf5;
+    cursor: pointer;
+    font-size: 100%;
+    height: 30px;
+    line-height: 1.15;
+    margin: 12px 0 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type=file]::file-selector-button:hover,
+.button1:hover {
+    background-color: #405cf5;
+    color: #fff;
+}
+
+.button1 {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 7.5px;
+}
+
+.ninethsetupform, .tenthsetupform, .eleventhsetupform, .twelfthsetupform {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(66,66,66, 0.57);
+}
+
+.modal-wrapper {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 75%;
+}
+
+.modalSlide {
+    position: absolute;
+    left:40%;
+    top:50%;
+    transform: translate(-2%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 18px 3px rgba(173,173,173,0.75);
+    width:50%;
+    height: 75%;
+    overflow: scroll;
+    margin: 10px;
+}
+
+
+#classesLog9, #classesLog10, #classesLog11, #classesLog12 {
+    position: absolute;
+    left:10%;
+    top:50%;
+    transform: translate(0%, -50%);
+    width: 25%;
+    height: 75%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 18px 3px rgba(173,173,173,0.75);
+    overflow: scroll;
+    margin: 10px;
+}
+
+
+
+#algILevelSelect, #geoLevelSelect {
+    margin-left: 15px;
+
+}
+
+.level-select-hidden {
+    display:none;
+    opacity: 0;
+}
+
+.level-select-visible {
+    display: block;
+    opacity: 1;
+}
+
+#mathLevelSelect {
+    display: flex;
+}
+
+.radio-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.radio-wrapper input[type="radio"] {
+    display: none;
+}
+
+.radio-wrapper label {
+    display: block;
+    border: 1.5px solid #405cf5;
+    color: #405cf5;
+    padding: 10px 15px;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.radio-wrapper input[type="radio"]:checked + label {
+    background-color: #405cf5;
+    color: white;
+    border-color: #405cf5;
+}
+
+.alg-or-geo-select-wrapper > .radio-wrapper label {
+    padding: 10px 15px;
+    width: 100px;
+}
+
+#algILevelSelect > .radio-wrapper label, #algIILevelSelect > .radio-wrapper label {
+    padding: 10px 15px;
+    width: 130px;
+}
+
+#geoLevelSelect > .radio-wrapper label {
+    padding: 10px 15px;
+    width: 130px;
+}
+
+.modal-slide-visible {
+    display:block;
+    opacity: 1;
+}
+
+.modal-slide-hidden {
+    display: none;
+    opacity: 0;
+}
+
+
+
+#wellnessElectiveSelect9 {
+    display: grid;
+    grid-template-columns: 175px 175px 175px;
+    grid-template-rows: 75px;
+    grid-row-gap:10px;
+    grid-column-gap: 10px;
+    align-items:center;
+}
+
+#wellnessElectiveSelect9 > .radio-wrapper {
+    display:table;
+    align-items: center;
+    height: 75px;
+
+}
+
+#wellnessElectiveSelect9 > .radio-wrapper label {
+    padding: 10px 15px;
+    width: 175px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.radio-wrapper input[type="checkbox"]:checked + label {
+    background-color: #405cf5;
+    color: white;
+    border-color: #405cf5;
+}
+
+.radio-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+
+#modalSlide6 > .radio-wrapper label {
+    padding: 10px 15px;
+    width: fit-content;
+}
+
+#modalSlide6 > .radio-wrapper {
+    margin-bottom: 10px;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#scienceLevelSelect > .radio-wrapper label {
+    padding: 10px 15px;
+    width: fit-content;
+}
+
+#semesterElective9, #yearElective9 {
+    display: grid;
+    grid-template-columns: 175px 175px 175px;
+    grid-template-rows: 50px;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    align-items:center;
+}
+
+#semesterElective9 > .radio-wrapper, #yearElective9 > .radio-wrapper {
+    display: table;
+    align-items: center;
+    height: 50px;
+}
+
+#semesterElective9 > .radio-wrapper label, #yearElective9 > .radio-wrapper label {
+    padding: 10px 15px;
+    width: 175px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.elective-select-hidden {
+    display: none;
+    opacity: 0;
+}
+
+.elective-select-visible {
+    display: block;
+    opacity: 1;
+}
+
+
+
+
+/* all for the navbar */
+
+/* set up some constants */
+:root {
+    --bg: #ededed;
+    --main-color: #405cf5;
+    --nav-margin-left: 1%;
+    --nav-width-expanded: 200px;
+    --nav-item-height: 40px;
+    --content-padding-left-active: calc(var(--nav-margin-left) + var(--nav-width-expanded) + 15px);
+    --valleyoftheshadowofdeath: 0px 10px 18px 3px rgba(173,173,173,0.75);
+}
+
+.navbar {
+    position: fixed;
+    width: var(--nav-width-expanded);
+    height: 95%;
+    margin: var(--nav-margin-left) 0 10px 10px;
+    border-radius: 15px;
+    box-shadow: var(--valleyoftheshadowofdeath);
+    background-color: #fff;
+    overflow: hidden;
+    transition: 0.2ms;
+    user-select: none;
+}
+
+.main {
+    padding-left: 20px;
+    margin-left: var(--nav-width-expanded);
+    width: calc(100% - var(--nav-width-expanded) - 20px);
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    z-index: 7;
+    padding-top: 1%;
+    padding-left: 40px;
+    transition: 0.2s;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.navbar li {
+
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    line-height: var(--nav-item-height);
+    height: var(--nav-item-height);
+    border-radius: 10px;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding-left: 7.5px;
+    display:grid;
+    grid-template-columns: 20% 80%;
+    list-style: none;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+#websiteTitle {
+    font-size: 25px;
+    cursor: auto;
+}
+
+/* .nav-item:hover {
+    background-color: rgba(64, 92, 245, 0.25);
+} */
+
+.brand-details {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon {
+    color: var(--main-color);
+    float: left;
+    margin-top: 8px;
+}
+
+.adjusted-icon-one {
+    padding-left: 2.5px;
+}
+
+.adjusted-icon-two {
+    padding-left: 3px;
+}
+
+.adjusted-icon-three {
+
+}
+
+/* scrollbar try 2 */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border: none;
+    display: none;
+    opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cccecf;
+    border-radius: 12px;
+    border: 5px transparent solid;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #bababa;
+}
+
+
+/* make the subject name a different color in the class containers */
+
+.big-subject {
+
+    color:  var(--main-color);
+
+}
+
+/* style the class cards */
+.class-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: var(--valleyoftheshadowofdeath);
+    width: 300px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
+
+#mainClassesDisplayContainer {
+
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+}
+
+
+.aggregated-9th-container, .aggregated-10th-container, .aggregated-11th-container, .aggregated-12th-container {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.aggregated-9th-container > .class-container,
+.aggregated-10th-container > .class-container,
+.aggregated-11th-container > .class-container,
+.aggregated-12th-container > .class-container {
+    width: fit-content;
+    margin-right: 20px;
+}
+
+#creditCounter {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
